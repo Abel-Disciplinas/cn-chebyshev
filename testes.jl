@@ -18,6 +18,16 @@ include("main.jl")
     @test chebyshev(3) == [0, -3, 0, 4]
     @test chebyshev(4) == [1, 0, -8, 0, 8]
   end
+
+  @testset "Erros" begin
+    @test_throws ErrorException avalia_poli(1.0, [])
+    for n = -5:-1
+      @test_throws ErrorException chebyshev(n)
+    end
+    for n = 41:45
+      @test_throws ErrorException chebyshev(n)
+    end
+  end
 end
 
 @testset "Testes avançados - parte 1" begin
